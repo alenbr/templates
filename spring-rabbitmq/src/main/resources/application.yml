@@ -1,0 +1,16 @@
+app:
+  name: "@pom.name@"
+  description: "@pom.description@"
+  version: "@pom.version@"
+
+spring:
+  rabbitmq:
+    host: ${RABBIT_HOST}
+    port: ${RABBIT_PORT}
+    virtual-host: ${RABBIT_VHOST}    
+    username: ${RABBIT_USERNAME}
+    password: ${RABBIT_PASSWORD}
+    queue: ${RABBIT_QUEUE_NAME}}
+    exchange:
+      name: ${RABBIT_EXCHANGE_NAME}
+      routingKey: ${RABBIT_ROUNTING_KEY}
