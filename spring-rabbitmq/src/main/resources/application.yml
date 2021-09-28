@@ -21,3 +21,7 @@ spring:
         max-concurrency: ${RABBIT_MAX_CONCURRENCY}
         idle-event-interval: 300000
         acknowledge-mode: manual
+  lifecycle:
+    timeout-per-shutdown-phase: "1m"  
+server:
+  shutdown: graceful
