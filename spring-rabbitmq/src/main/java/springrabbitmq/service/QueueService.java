@@ -20,7 +20,14 @@ public class QueueService {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 	public void send(String messageToSend) {
-		rabbitTemplate.convertAndSend(exchangeName, routingKey, messageToSend);
+		rabbitTemplate.invoke(template -> {
+			template.convertAndSend(exchangeName, routingKey, messageToSend);
+			template.waitForConfirmsOrDie(20_000);
+			return true;
+		},(tag, multiple) -> {
+			// ToDo - Implement here the statements for after ack confirm  
+		},(tag, multiple) -> {
+			// ToDo - Implement here the statements for after unAck confirm  
+		});
 	}
-
 }
